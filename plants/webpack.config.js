@@ -13,18 +13,18 @@ const devServer = (isDev) => !isDev ? {} : {
 
 module.exports = ({develop}) => ({
   mode: develop ? 'development' : 'production',
-  entry: './src/index.js',
+  entry: ['./src/index.js', './src/styles/style.scss'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'script.js',
     clean: true,
   },
   plugins: [
       new HtmlWebpackPlugin({
-          template: './index.html'
+          template: 'index.html'
       }),
       new MiniCssExtractPlugin({
-          filename: './style.css'
+          filename: 'style.css'
       })
   ],
   module: {
