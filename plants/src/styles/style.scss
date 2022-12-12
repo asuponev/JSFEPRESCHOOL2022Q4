@@ -7,6 +7,7 @@ $font-h-welcome: 700 45px/1.1 'Inter', sans-serif;
 $font-text-welcome: 400 20px/1.75 'Inter', sans-serif;
 $font-btn: 400 16px/1.25 'Inter', sans-serif;
 $font-h2: 400 40px/1.3 'Inika', serif;
+$font-cards-title: 700 20px/1 'Inter', sans-serif;
 
 // color variables
 $color-black: #000000;
@@ -15,8 +16,9 @@ $color-white: #FFFFFF;
 $color-green: #499A18;
 $color-nav: #010201;
 $color-bg-green: #EDF2EC;
-$color-h1: #717171;
-$color-text: #636060;
+$color-gray-71: #717171;
+$color-gray-63: #636060;
+$color-cards-border: #E3E1D5;
 
 * {
   padding: 0;
@@ -92,7 +94,7 @@ a {
     width: 549px;
     &_title {
       font: $font-h-welcome;
-      color: $color-h1;
+      color: $color-gray-71;
       margin: 0;
       span {
         color: $color-green;
@@ -100,7 +102,7 @@ a {
     }
     &_text {
       font: $font-text-welcome;
-      color: $color-text;
+      color: $color-gray-63;
       margin-top: 42px;
       margin-bottom: 48px;
     }
@@ -149,12 +151,82 @@ a {
     &_text {
       font: $font-text-welcome;
       line-height: 1.5;
-      color: $color-text;
+      color: $color-gray-63;
     }
   }
   &__image {
     background-image: url("../img/houseplant.png");
     width: 464px;
     height: 479px;
+  }
+}
+
+.service {
+  background-color: $color-bg-green;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 40px 109px 121px;
+  }
+  &__top {
+    display: flex;
+    gap: 142px;
+    align-items: center;
+  }
+  &__title {
+    font: $font-h2;
+    color: $color-green;
+    width: 306px;
+  }
+  &__buttons {
+    display: flex;
+    gap: 38px;
+    &_item {
+      width: 161px;
+      height: 50px;
+      border: 1px solid $color-orange;
+      border-radius: 5px;
+      font: $font-h2;
+      font-size: 20px;
+      color: $color-orange;
+      background: $color-bg-green;
+      cursor: pointer;
+      text-align: center;
+    }
+    &_item:hover {
+      color: $color-white;
+      background: $color-orange;
+    }
+  }
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 55px;
+    column-gap: 116px;
+    &_item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 330px;
+      height: 450px;
+      border-radius: 20px;
+      border: 1px solid $color-cards-border;
+      &-img {
+        width: 330px;
+        height: 350px;
+        border-radius: 20px 20px 0 0;
+      }
+      &-title {
+        font: $font-cards-title;
+        color: $color-orange;
+      }
+      &-description {
+        font: $font-btn;
+        color: $color-gray-71;
+      }
+    }
   }
 }
