@@ -10,6 +10,7 @@ $font-h2: 400 40px/1.3 'Inika', serif;
 $font-cards-title: 700 20px/1 'Inter', sans-serif;
 $font-h2-inter: 700 40px/1.21 'Inter', sans-serif;
 $font-select-contacts: 400 20px/2 'Inter', sans-serif;
+$font-footer: 400 20px/2.5 'Inter', sans-serif;
 
 // color variables
 $color-black: #000000;
@@ -376,6 +377,59 @@ a {
       svg {
         width: 4px;
         height: 2.35px;
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: $color-white;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 109px;
+  }
+  &__dev {
+    display: flex;
+    gap: 20px;
+    font: $font-footer;
+    color: $color-black;
+    a {
+      color: $color-black;
+    }
+  }
+  &__course {
+    display: block;
+    font: $font-footer;
+    color: $color-black;
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    &_item {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .inst {
+        width: 26.66px;
+        height: 26.66px;
+      }
+      .fb {
+        width: 16.66px;
+        height: 26.66px;
+      }
+      .tw {
+        width: 26.66px;
+        height: 21.66px;
+      }
+      .pntrst {
+        width: 26.57px;
+        height: 26.66px;
       }
     }
   }
