@@ -2,7 +2,8 @@
   "name": "plants",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack serve --env develop"
+    "dev": "webpack serve --env develop",
+    "serve": "webpack serve"
   },
   "devDependencies": {
     "css-loader": "^6.7.2",

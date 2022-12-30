@@ -51,6 +51,7 @@ module.exports = ({develop}) => ({
           }
       ]
   },
+  performance: {hints: false},
   ...devServer(develop),
 });
 

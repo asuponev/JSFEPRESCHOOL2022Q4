@@ -24,6 +24,7 @@ $color-gray-63: #636060;
 $color-cards-border: #E3E1D5;
 $color-arrow: #D9D9D9;
 $color-arrow-contacts: #AEA1A1;
+$color-select: #D6E7D2;
 
 * {
   padding: 0;
@@ -108,6 +109,7 @@ a {
     &_text {
       font: $font-text-welcome;
       color: $color-gray-63;
+      width: 525px;
       margin-top: 42px;
       margin-bottom: 48px;
     }
@@ -269,6 +271,7 @@ a {
       background-color: $color-bg-green;
       border-radius: 20px;
       padding: 16px 40px;
+      cursor: pointer;
       &-title {
         font: $font-cards-title;
         color: $color-black;
@@ -287,6 +290,13 @@ a {
           width: 4px;
           height: 2.35px;
         }
+      }
+    }
+    &_item:hover {
+      background-color: $color-arrow;
+      .prices__items_item-arrow svg {
+        width: 16px;
+        height: 9.4px;
       }
     }
   }
@@ -335,7 +345,7 @@ a {
     display: flex;
     justify-content: space-between;
     gap: 64px;
-    padding: 45px 109px 8px;
+    padding: 53px 109px 0px;
   }
   &__image {
     background-image: url("../img/contact_woman.png");
@@ -352,7 +362,7 @@ a {
   &__select {
     width: 450px;
     height: 50px;
-    background: #D6E7D2;
+    background: $color-select;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px;
     padding: 5px 35px 5px 20px;
@@ -360,6 +370,7 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-top: 103px;
+    cursor: pointer;
     &-title {
       font: $font-select-contacts;
       color: $color-gray-71;
@@ -380,6 +391,16 @@ a {
       }
     }
   }
+  &__select:hover {
+    background: $color-arrow-contacts;
+    span {
+      color: $color-white;
+    }
+    .contacts__select-arrow svg {
+      width: 16px;
+      height: 9.4px;
+    }
+  }
 }
 
 .footer {
@@ -398,11 +419,17 @@ a {
     a {
       color: $color-black;
     }
+    a:hover {
+      color: $color-orange;
+    }
   }
   &__course {
     display: block;
     font: $font-footer;
     color: $color-black;
+  }
+  &__course:hover {
+    color: $color-orange;
   }
   &__links {
     display: flex;
@@ -415,6 +442,10 @@ a {
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      .social-icon:hover {
+        fill: $color-orange;
+      }
       .inst {
         width: 26.66px;
         height: 26.66px;
