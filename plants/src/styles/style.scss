@@ -77,6 +77,7 @@ a {
   &__link:hover,
   &__link_active {
     color: $color-orange;
+    transition-duration: 0.5s;
   }
 }
 
@@ -294,6 +295,7 @@ a {
     }
     &_item:hover {
       background-color: $color-arrow;
+      transition-duration: 0.5s;
       .prices__items_item-arrow svg {
         width: 16px;
         height: 9.4px;
@@ -393,6 +395,7 @@ a {
   }
   &__select:hover {
     background: $color-arrow-contacts;
+    transition-duration: 0.5s;
     span {
       color: $color-white;
     }
@@ -421,6 +424,7 @@ a {
     }
     a:hover {
       color: $color-orange;
+      transition-duration: 0.5s;
     }
   }
   &__course {
@@ -430,6 +434,7 @@ a {
   }
   &__course:hover {
     color: $color-orange;
+    transition-duration: 0.5s;
   }
   &__links {
     display: flex;
@@ -443,8 +448,10 @@ a {
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      
       .social-icon:hover {
         fill: $color-orange;
+        transition-duration: 0.5s;
       }
       .inst {
         width: 26.66px;
