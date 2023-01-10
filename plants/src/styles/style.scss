@@ -26,6 +26,10 @@ $color-arrow: #D9D9D9;
 $color-arrow-contacts: #AEA1A1;
 $color-select: #D6E7D2;
 
+body.body-hidden {
+  overflow: hidden;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -54,21 +58,44 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 42px 109px;
-  }
-  &__logo::before {
-    content: url("../img/logo_vector.svg");
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @media (max-width: 1000px) {
+      padding: 35px 50px;
+    }
+    @media (max-width: 700px) {
+      padding: 35px 35px;
+    }
+    @media (max-width: 530px) {
+      padding: 35px 25px;
+    }
   }
   &__logo {
-    font: $font-logo;
-    color: $color-black;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 20px;
+    img {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      display: block;
+      font: $font-logo;
+      color: $color-black;
+    }
   }
   &__list {
     display: flex;
     gap: 46px;
+    @media (max-width: 700px) {
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    @media (max-width: 530px) {
+      gap: 20px;
+    }
   }
   &__link {
     font: $font-nav;
@@ -79,6 +106,92 @@ a {
     color: $color-orange;
     transition-duration: 0.5s;
   }
+  &__burger {
+    display: none;
+  }
+  .shadow {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(41, 41, 41, 0.6);
+    z-index: 9;
+    cursor: pointer;
+  }
+  .shadow-enabled {
+    display: block;
+  }
+
+  // for burger
+  @media (max-width: 480px) {
+    .header__nav {
+      position: fixed;
+      top: 0;
+      width: 320px;
+      height: 100vh;
+      background-color: $color-bg-green;
+      z-index: 10;
+      right: -320px;
+      transition: 0.5s;
+      overflow-y: scroll;
+    }
+    .header__list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 88px;
+      margin-left: 40px;
+    }
+    .nav-open {
+      right: 0;
+    }
+    .header__burger {
+      display: block;
+      position: relative;
+      width: 40px;
+      height: 24px;
+      z-index: 11;
+      .line {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: $color-gray-71;
+        display: block;
+        transition: all 0.3s ease-in-out;
+        z-index: 11;
+      }
+      .line:nth-child(2) {
+        top: 7px;
+      }
+      .line:nth-child(3) {
+        bottom: 7px;
+      }
+      .line:nth-child(4) {
+        bottom: 0;
+      }
+    }
+    .header__burger.is-active {
+      .line:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+      }
+      .line:nth-child(2) {
+        opacity: 0;
+      }
+      .line:nth-child(3) {
+        opacity: 0;
+      }
+      .line:nth-child(4) {
+        transform: translateY(-11px) rotate(-45deg);
+      }
+    }
+    .header__burger:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .welcome {
@@ -88,23 +201,62 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 62px 109px;
+    @media (max-width: 1220px) {
+      padding: 40px 50px 70px;
+    }
+    @media (max-width: 730px) {
+      justify-content: center;
+      padding: 28px 25px 24px;
+    }
   }
   &__image {
     background-image: url("../img/leafs.png");
     width: 448.8px;
     height: 407.36px;
+    @media (max-width: 1220px) {
+      order: 2;
+      align-self: flex-start;
+    }
+    @media (max-width: 1050px) {
+      width: 280px;
+      height: 254.15px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    @media (max-width: 730px) {
+      display: none;
+    }
   }
   &__inner {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 549px;
+    @media (max-width: 1220px) {
+      order: 1;
+      max-width: 346px;
+      gap: 30px;
+    }
+    @media (max-width: 730px) {
+      gap: 20px;
+    }
+    @media (max-width: 400px) {
+      width: auto;
+    }
     &_title {
       font: $font-h-welcome;
       color: $color-gray-71;
       margin: 0;
       span {
         color: $color-green;
+      }
+      @media (max-width: 1000px) {
+        font-size: 35px;
+        line-height: 1.43;
+      }
+      @media (max-width: 730px) {
+        font-size: 25px;
+        line-height: 1.4;
       }
     }
     &_text {
@@ -113,6 +265,15 @@ a {
       width: 525px;
       margin-top: 42px;
       margin-bottom: 48px;
+      @media (max-width: 1000px) {
+        font-size: 16px;
+        max-width: 341px;
+        margin: 0;
+        line-height: 1.5625;
+      }
+      @media (max-width: 400px) {
+        width: auto;
+      }
     }
     &_button {
       width: 158px;
@@ -125,6 +286,13 @@ a {
       cursor: pointer;
       text-align: center;
       text-transform: uppercase;
+      @media (max-width: 400px) {
+        width: 100px;
+        height: 34.14px;
+        font-size: 10px;
+        line-height: 2;
+        margin-top: 6px;
+      }
     }
     &_button:hover {
       color: $color-white;
@@ -140,13 +308,31 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 94px 109px;
+    @media (max-width: 1220px) {
+      flex-direction: column;
+    }
+    @media (max-width: 1000px) {
+      padding: 40px 50px 95px;
+      gap: 40px;
+    }
+    @media (max-width: 400px) {
+      padding: 30px 25px 33px;
+      gap: 0;
+    }
   }
   &__inner {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    width: 605px;
+    max-width: 605px;
+    @media (max-width: 768px) {
+      align-items: center;
+      gap: 55px;
+    }
+    @media (max-width: 400px) {
+      gap: 15px;
+    }
     &_title {
       font: $font-h2;
       color: $color-green;
@@ -155,17 +341,47 @@ a {
       span {
         color: $color-orange;
       }
+      @media (max-width: 768px) {
+        max-width: 423px;
+        text-align: center;
+        font-size: 35px;
+      }
+      @media (max-width: 760px) {
+        width: auto;
+        font-size: 25px;
+      }
     }
     &_text {
       font: $font-text-welcome;
       line-height: 1.5;
       color: $color-gray-63;
+      @media (max-width: 768px) {
+        width: 668px;
+        height: 208px;
+      }
+      @media (max-width: 760px) {
+        width: auto;
+        height: auto;
+        font-size: 15px;
+        line-height: 1.6667;
+      }
     }
   }
   &__image {
     background-image: url("../img/houseplant.png");
     width: 464px;
     height: 479px;
+    @media (max-width: 768px) {
+      width: 250px;
+      height: 258px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    @media (max-width: 400px) {
+      width: 150px;
+      height: 147px;
+      background-size: cover;
+    }
   }
 }
 
@@ -177,16 +393,35 @@ a {
     justify-content: space-between;
     gap: 80px;
     padding: 40px 109px 121px;
+    @media (max-width: 1000px) {
+      padding: 60px 50px 70px;
+      gap: 40px;
+    }
+    @media (max-width: 400px) {
+      padding: 30px 25px 27px;
+    }
   }
   &__top {
     display: flex;
     gap: 142px;
     align-items: center;
+    @media (max-width: 1200px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+    }
   }
   &__title {
     font: $font-h2;
     color: $color-green;
     width: 306px;
+    @media (max-width: 768px) {
+      font-size: 35px;
+    }
+    @media (max-width: 700px) {
+      font-size: 25px;
+      max-width: 187px;
+    }
   }
   &__buttons {
     display: flex;
@@ -202,17 +437,34 @@ a {
       background: $color-bg-green;
       cursor: pointer;
       text-align: center;
+      @media (max-width: 700px) {
+        width: 121px;
+        height: 35px;
+        font-size: 15px;
+      }
     }
     &_item:hover {
       color: $color-white;
       background: $color-orange;
     }
+    @media (max-width: 700px) {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
   }
   &__cards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     row-gap: 55px;
     column-gap: 116px;
+    @media (max-width: 1000px) {
+      row-gap: 38px;
+      column-gap: 106px;
+    }
+    @media (max-width: 700px) {
+      gap: 34px;
+    }
     &_item {
       display: flex;
       flex-direction: column;
@@ -222,10 +474,18 @@ a {
       height: 450px;
       border-radius: 20px;
       border: 1px solid $color-cards-border;
+      @media (max-width: 1000px) {
+        max-width: 280px;
+        height: 450px;
+      }
       &-img {
         width: 330px;
         height: 350px;
         border-radius: 20px 20px 0 0;
+        @media (max-width: 768px) {
+          width: 280px;
+          object-fit: cover;
+        }
       }
       &-title {
         font: $font-cards-title;
@@ -234,6 +494,10 @@ a {
       &-description {
         font: $font-btn;
         color: $color-gray-71;
+        @media (max-width: 768px) {
+          max-width: 201px;
+          text-align: center;
+        }
       }
     }
   }
@@ -244,17 +508,41 @@ a {
   .container {
     display: flex;
     justify-content: space-between;
-    gap: 80px;
     padding: 40px 109px 115px;
+    @media (max-width: 1000px) {
+      padding: 40px 50px 88px;
+    }
+    @media (max-width: 740px) {
+      flex-direction: column;
+      align-items: center;
+      padding: 25px 25px 40px;
+      gap: 20px;
+    }
   }
   &__left {
     display: flex;
     flex-direction: column;
     gap: 60px;
+    @media (max-width: 1000px) {
+      gap: 60px;
+    }
+    @media (max-width: 740px) {
+      order: 1;
+      gap: 35px;
+    }
   }
   &__title {
     font: $font-h2-inter;
     color: $color-black;
+    @media (max-width: 1000px) {
+      font-size: 35px;
+      margin-left: 15px;
+    }
+    @media (max-width: 740px) {
+      font-size: 25px;
+      text-align: center;
+      margin: 0;
+    }
   }
   &__items {
     display: flex;
@@ -263,6 +551,10 @@ a {
     padding: 34px 41px;
     border: 1px solid $color-cards-border;
     border-radius: 20px;
+    @media (max-width: 400px) {
+      padding: 29px 22px;
+      gap: 14px;
+    }
     &_item {
       display: flex;
       justify-content: space-between;
@@ -273,10 +565,19 @@ a {
       border-radius: 20px;
       padding: 16px 40px;
       cursor: pointer;
+      @media (max-width: 400px) {
+        width: 180px;
+        height: 50px;
+        padding: 16px 40px 16px 30px;
+      }
       &-title {
         font: $font-cards-title;
         color: $color-black;
         display: block;
+        @media (max-width: 400px) {
+          font-size: 15px;
+          line-height: 1.333;
+        }
       }
       &-arrow {
         width: 16px;
@@ -307,6 +608,14 @@ a {
     flex-direction: column;
     gap: 38px;
     align-items: flex-end;
+    @media (max-width: 1000px) {
+      gap: 30px;
+    }
+    @media (max-width: 740px) {
+      order: 2;
+      align-items: center;
+      gap: 20px;
+    }
   }
   &__subtitle {
     text-align: right;
@@ -314,6 +623,21 @@ a {
     line-height: 1.25;
     color: $color-black;
     width: 452px;
+    @media (max-width: 1000px) {
+      font-size: 25px;
+      max-width: 296px;
+      margin-top: 100px;
+      line-height: 1.4;
+    }
+    @media (max-width: 740px) {
+      font-size: 20px;
+      line-height: 1.67;
+      text-align: center;
+      margin: 0;
+    }
+    @media (max-width: 400px) {
+      width: 230px;
+    }
     span {
       color: $color-green;
     }
@@ -329,6 +653,11 @@ a {
     background: $color-white;
     cursor: pointer;
     text-align: center;
+    @media (max-width: 400px) {
+      width: 121px;
+      height: 35px;
+      font-size: 15px;
+    }
   }
   &__button:hover {
     color: $color-white;
@@ -338,6 +667,9 @@ a {
     background-image: url("../img/leafs_prices.png");
     width: 152px;
     height: 175px;
+    @media (max-width: 740px) {
+      display: none;
+    }
   }
 }
 
@@ -348,11 +680,37 @@ a {
     justify-content: space-between;
     gap: 64px;
     padding: 53px 109px 0px;
+    @media (max-width: 1430px) {
+      padding: 40px 159px 0px;
+      flex-direction: column;
+      align-items: center;
+      gap: 100px;
+    }
+    @media (max-width: 740px) {
+      padding: 26px 42px 0;
+      gap: 80px;
+    }
   }
   &__image {
     background-image: url("../img/contact_woman.png");
     width: 400px;
     height: 497px;
+    @media (max-width: 1430px) {
+      order: 3;
+    }
+    @media (max-width: 769px) {
+      width: 200px;
+      height: 248.49px;
+      background-size: contain;
+      margin-top: 150px;
+      margin-left: 20px;
+    }
+    @media (max-width: 550px) {
+      width: 100px;
+      height: 124.25px;
+      margin-top: 52px;
+      margin-left: 0;
+    }
   }
   &__title {
     font: $font-h2;
@@ -360,6 +718,13 @@ a {
     color: $color-green;
     margin-top: 15px;
     margin-left: 40px;
+    @media (max-width: 1430px) {
+      margin: 0;
+      order: 1;
+    }
+    @media (max-width: 550px) {
+      font-size: 25px;
+    }
   }
   &__select {
     width: 450px;
@@ -373,11 +738,19 @@ a {
     align-items: center;
     margin-top: 103px;
     cursor: pointer;
+    @media (max-width: 1430px) {
+      order: 2;
+      margin: 0;
+    }
+    @media (max-width: 550px) {
+      max-width: 300px;
+      height: 50px;
+      padding-right: 20px;
+    }
     &-title {
       font: $font-select-contacts;
       color: $color-gray-71;
     }
-
     &-arrow {
       width: 16px;
       height: 16px;
@@ -392,6 +765,7 @@ a {
         height: 2.35px;
       }
     }
+
   }
   &__select:hover {
     background: $color-arrow-contacts;
@@ -413,12 +787,23 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 40px 109px;
+    @media (max-width: 850px) {
+      padding: 33px 109px 18px;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (max-width: 550px) {
+      padding: 22px 42px 0;
+    }
   }
   &__dev {
     display: flex;
     gap: 20px;
     font: $font-footer;
     color: $color-black;
+    @media (max-width: 850px) {
+      line-height: 1.21;
+    }
     a {
       color: $color-black;
     }
@@ -431,6 +816,9 @@ a {
     display: block;
     font: $font-footer;
     color: $color-black;
+    @media (max-width: 850px) {
+      line-height: 1.21;
+    }
   }
   &__course:hover {
     color: $color-orange;
@@ -441,6 +829,12 @@ a {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    @media (max-width: 800px) {
+      margin-top: 11px;
+    }
+    @media (max-width: 400px) {
+      margin-top: 0;
+    }
     &_item {
       width: 32px;
       height: 32px;
@@ -448,7 +842,6 @@ a {
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      
       .social-icon:hover {
         fill: $color-orange;
         transition-duration: 0.5s;
