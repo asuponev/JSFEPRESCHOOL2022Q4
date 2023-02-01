@@ -443,7 +443,7 @@ a {
         font-size: 15px;
       }
     }
-    &_item:hover {
+    &_item:hover, .active-service {
       color: $color-white;
       background: $color-orange;
     }
@@ -499,6 +499,9 @@ a {
           text-align: center;
         }
       }
+    }
+    .blur {
+      filter: blur(4px);
     }
   }
 }
