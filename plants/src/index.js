@@ -1,5 +1,6 @@
 import burger from'./modules/burger.js';
 import service from './modules/service.js';
+import prices from './modules/prices.js';
 
 import 'normalize.css'
 import './styles/style.scss';
@@ -8,6 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   burger();
   service();
+  prices();
 
 //   console.log(
 //     'В ССЫЛКЕ НА ПРОЕКТ ПОСЛЕ /plants ДОБАВЛЕНA ССЫЛКА НА ПАПКУ СБОРКИ /dist, Т.К. СБОРКА ВЫПОЛНЕНА С ПОМОЩЬЮ WEBPACK\n\n',
