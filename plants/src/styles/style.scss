@@ -446,6 +446,7 @@ a {
     &_item:hover, .active-service {
       color: $color-white;
       background: $color-orange;
+      transition-duration: 1s;
     }
     @media (max-width: 700px) {
       flex-wrap: wrap;
@@ -501,7 +502,8 @@ a {
       }
     }
     .blur {
-      filter: blur(4px);
+      filter: blur(10px);
+      transition-duration: 2s;
     }
   }
 }
